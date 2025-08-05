@@ -991,8 +991,21 @@ require('lazy').setup({
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
 
+
   -- nvim-numbertoggle: Automatically toggles between relative and absolute line numbers
   { 'sitiom/nvim-numbertoggle' },
+
+
+  -- nvim-tree.lua: File explorer for Neovim
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('nvim-tree').setup {}
+      -- Map Control+b to toggle nvim-tree (works in most terminals)
+      vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', { desc = 'Toggle nvim-tree file explorer' })
+    end,
+  },
 
   -- render-markdown.nvim: Render markdown directly within neovim
   {
